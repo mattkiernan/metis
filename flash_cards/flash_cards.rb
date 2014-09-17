@@ -45,13 +45,13 @@ decks = []
 spanish_cards = []
 japanese_cards = []
 
-spanish_cards << Card.new("Perro", "Dog")
-spanish_cards << Card.new("Gato", "Cat")
-japanese_cards << Card.new("Inu", "Dog")
-japanese_cards << Card.new("Neko", "Cat")
+spanish_cards << Card.new({front: "Perro", back: "Dog"})
+spanish_cards << Card.new({front: "Gato", back: "Cat"})
+japanese_cards << Card.new({front: "Inu", back: "Dog"})
+japanese_cards << Card.new({front: "Neko", back: "Cat"})
 
-decks << Deck.new("Spanish", spanish_cards)
-decks << Deck.new("Japanese", japanese_cards)
+decks << Deck.new({name: "Spanish", cards: spanish_cards})
+decks << Deck.new({name: "Japanese", cards: japanese_cards})
 
 flash_card_game = FlashCardGame.new(decks)
 flash_card_game.play

@@ -2,14 +2,15 @@ require "./card"
 
 class Deck
 
-	def initialize(name, cards)
-		@name = name
-		@cards = cards
+	attr_reader :name
+
+	def initialize(name_and_cards)
+		@name = name_and_cards[:name]
+		@cards = name_and_cards[:cards]
 	end
 
 	def play
 		@cards.each {|card| card.play}
 	end
 
-	attr_reader :name
 end
