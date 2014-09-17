@@ -9,12 +9,18 @@ class FlashCardGame
 	def play
 		loop do
 			show_user_decks
-			deck = ask_user_which_deck
-			if deck == ""
+			requested_deck_name = ask_user_which_deck
+			if requested_deck_name == ""
 				puts "Exiting..."
 				break
 			else
-				puts "You chose #{deck}"
+				deck = find_deck(requested_deck_name)
+				if deck
+					puts "We'll play #{deck.name}"
+					deck.play
+				else
+					puts "Please chose a correct deck"			
+				end
 			end
 		end
 	end
@@ -29,19 +35,43 @@ class FlashCardGame
 		@decks.each {|deck| puts deck.name}
 	end
 
+	def find_deck(requested_deck_name)
+		@decks.find {|deck| deck.name == requested_deck_name} 
+	end
+
 end
 
 decks = []
+spanish_cards = []
+japanese_cards = []
 
-deck1 = Deck.new("Spanish")
-deck2 = Deck.new("English")
-decks.push(deck1,deck2)
+spanish_cards << Card.new("Perro", "Dog")
+spanish_cards << Card.new("Gato", "Cat")
+japanese_cards << Card.new("Inu", "Dog")
+japanese_cards << Card.new("Neko", "Cat")
+
+decks << Deck.new("Spanish", spanish_cards)
+decks << Deck.new("Japanese", japanese_cards)
 
 flash_card_game = FlashCardGame.new(decks)
 flash_card_game.play
 
 
 
-#create empty decks array
-#create new english deck & new spanish deck & add both to decks array
-#create game with decks
+#create a new cards class
+
+#initialize to tell Card it has a front & back, store in instance variables
+
+
+#def play
+
+#puts the front & back of the card in string
+
+#we need to add cards to deck class initialize
+
+#need to define play, for each card, we need to play the card and cards.each is an instance variable
+
+#remember to require the card class whereeer you use it
+
+
+#add type of cards as argument to decks class

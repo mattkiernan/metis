@@ -1,7 +1,17 @@
+class Deck
+
+	def initialize(name)
+		@name = name
+	end
+
+	attr_reader :name
+end
+
 class FlashCardGame
 
 	def play
 		loop do
+			show_decks
 			deck = ask_user_which_deck
 			if deck == ""
 				puts "Exiting"
@@ -38,7 +48,18 @@ class FlashCardGame
 		answer == guess
 	end
 
+	def show_decks
+		puts "You can choose from the following decks: "
+		decks.each {|deck| puts deck.name}
+	end
+
 end
+
+decks = []
+
+deck1 = Deck.new("Spanish")
+deck2 = Deck.new("Japaneese")
+decks.push(deck1,deck2)
 
 flash_card_game = FlashCardGame.new
 flash_card_game.play
