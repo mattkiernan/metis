@@ -34,7 +34,3 @@ class DeckReader
 	end
 
 end
-
-deck_reader = DeckReader.new("decks.txt")
-decks = deck_reader.get_decks
-puts decks.inspect
