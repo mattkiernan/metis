@@ -1,16 +1,13 @@
 class LockerEvent
 
-	def initialize(lockers, students)
+	def initialize(lockers)
 		@lockers = lockers
-		@students = students
-		@locker_number = lockers[:locker_number]
-		@locker_state = lockers[:locker_state]
 	end
 
 	def run
-		@students.each do |student|
+		(1..100).each do |student|
 			@lockers.each do |locker|
-				if student % @locker_number == 0
+				if student % locker == 0
 					toggle(@locker_state)
 				end
 			end
@@ -26,12 +23,9 @@ class LockerEvent
 	end
 end
 
-students = []
-students << (1..100).each {|student_number|	puts student_number}
-
 lockers = []
-lockers << 100.times {|locker| {locker_number: locker, locker_state: "closed"}}
+100.times {lockers << "closed"}
 
 
-locker_event = LockerEvent.new(lockers, students)
+locker_event = LockerEvent.new(lockers)
 locker_event.run
