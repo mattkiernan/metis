@@ -1,4 +1,4 @@
-require "./deck"
+require "./decks"
 
 class FlashCardGame
 
