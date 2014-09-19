@@ -20,8 +20,12 @@ class Database
 
 	def display_songs(user_input)
 		@results = @artists[user_input]
-		@results.sort!
-		puts @results
+		if @results.nil?
+			puts "Artist not found."
+		else
+			@results.sort!
+			puts @results
+		end
 	end
 
 end

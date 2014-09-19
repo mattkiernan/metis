@@ -8,7 +8,7 @@ class Jukebox
 	end
 
 	def welcome_user
-		puts "Welcome to the Jukebox. Launching database..."
+		puts "Welcome to the Jukebox. Press <Enter> at any time to exit. Launching database..."
 		launch_database
 	end
 
@@ -26,10 +26,15 @@ class Jukebox
 	end
 
 	def display_songs
-		puts "*"*25
-		puts "Songs by #{@user_input}"
-		puts "*"*25
-		@database.display_songs(@user_input)
+		if @user_input != ""
+			puts "*"*25
+			puts "Songs by #{@user_input}"
+			puts "*"*25
+			@database.display_songs(@user_input)
+			ask_for_artist
+		else
+			puts "Exiting..."
+		end
 	end
 
 end
