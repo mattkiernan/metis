@@ -5,6 +5,7 @@ class Database
 	def initialize(file_name)
 		@file_name = file_name
 		@artists = {}
+		@results
 	end
 
 	def populate_database
@@ -15,10 +16,12 @@ class Database
 				@artists[row["Artist"]] = [row["Name"]]
 			end
 		end
-		puts @artists
+	end
+
+	def display_songs(user_input)
+		@results = @artists[user_input]
+		@results.sort!
+		puts @results
 	end
 
 end
-
-database = Database.new("music.csv")
-database.populate_database

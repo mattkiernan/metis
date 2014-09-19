@@ -1,45 +1,38 @@
-require "./databse"
+require "./database"
 
 class Jukebox
 
 	def initialize
-		@database = launch_database
+		@database
 		@user_input
 	end
 
-	welcome_user
-
-	ask_for_artist
-
-	find_artist
-
-	display_song
-
-	def launch_database
-		database = Database.new
-		database.populate_database
+	def welcome_user
+		puts "Welcome to the Jukebox. Launching database..."
+		launch_database
 	end
 
-	def welcome_user
-		puts "Welcome to the Jukebox."
+	def launch_database
+		database = Database.new("music.csv")
+		@database = database
+		@database.populate_database
+		ask_for_artist
 	end
 
 	def ask_for_artist
 		print "Query >>"
-		user_input = gets.chomp
-		find_artist(user_input)
+		@user_input = gets.chomp
+		display_songs
 	end
 
-	def find_artist(user_input)
-		find.each do |artist|
-			if user_input == artist
-				display_song
-			end
-		end
-	end
-
-	def display_song
-		puts @database[user_input]
+	def display_songs
+		puts "*"*25
+		puts "Songs by #{@user_input}"
+		puts "*"*25
+		@database.display_songs(@user_input)
 	end
 
 end
+
+jukebox = Jukebox.new
+jukebox.welcome_user
