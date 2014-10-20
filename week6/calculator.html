@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <script>
+    function sumValues(){
+      var left_value = Number(document.getElementById('left').value);
+      var right_value = Number(document.getElementById('right').value);
+      var operator = document.getElementById('operator').value;
+      if(operator === "+"){
+        var result  = left_value + right_value;
+      }else if(operator === "-"){
+        var result = left_value - right_value; 
+      }else if(operator === "*"){
+        var result = left_value * right_value;
+      }else if(operator === "/"){
+        var result = left_value / right_value;
+      }else if(operator === "**"){
+        var result = Math.pow(left_value, right_value);
+      }else{
+        var result = "Hey, you can't do that!"
+      }
+      var resultElement = document.getElementById('resultElement');
+      resultElement.innerText = result 
+      return false;
+    }
+  </script>
+</head>
+<body> 
+<h1>Calculator</h1> 
+<p id="resultElement">Hello</p>
+  <form onsubmit="return sumValues();">
+    <input type="number" id="left" />
+    <input type="text" id="operator" />
+    <input type="number" id="right" />
+    <input type="submit" />
+  </form>
+</body>
+</html>
