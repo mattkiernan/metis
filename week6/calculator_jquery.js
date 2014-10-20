@@ -1,8 +1,14 @@
-//javascript
+//jquery
+
+$(function(){
+  $("#theForm").submit(sumValues);
+});
+
 function sumValues(){
-  var left_value = Number(document.getElementById('left').value);
-  var right_value = Number(document.getElementById('right').value);
-  var operator = document.getElementById('operator').value;
+  var left_value = Number($("#left").val());
+  var right_value = Number($("#right").val());
+  var operator = $("#operator").val();
+
   if(operator === "+"){
     var result  = left_value + right_value;
   }else if(operator === "-"){
@@ -16,7 +22,7 @@ function sumValues(){
   }else{
     var result = "Hey, you can't do that!"
   }
-  var resultElement = document.getElementById('resultElement');
-  resultElement.innerText = result 
+  var resultElement = $("#resultElement"); 
+  resultElement.text(result) 
   return false;
   }
